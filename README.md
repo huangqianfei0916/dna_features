@@ -2,5 +2,6 @@
 ***********************
 ### 文件格式
 *******************
-* 文件的格式如 : feture_fasta.fasta
-* 运行： 执行feture.py 对应的修改函数名即可
+* 参考文件 : feature_fasta.fasta  
+
+* 运行： 执行feture.py ，修改需要的feature名称
