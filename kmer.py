@@ -9,7 +9,7 @@ def kmerArray(sequence, k):
     return kmer
 
 
-def Kmer(fastas, k=2, type="DNA", upto=False, normalize=True, **kw):
+def Kmer(fastas, k=4, type="DNA", upto=False, normalize=True, **kw):
     encoding = []
     header = ['#', 'label']
     NA = 'ACGT'
