@@ -18,5 +18,4 @@ def NCP(fastas, **kw):
         for aa in sequence:
             code = code + chemical_property.get(aa, [0, 0, 0])
         encodings.append(code)
-    np.savetxt("ncp", encodings)
     return np.array(encodings)

@@ -31,5 +31,4 @@ def CKSNAP(fastas, gap=5, **kw):
             for pair in aaPairs:
                 code.append(myDict[pair] / sum)
         encodings.append(code)
-    np.savetxt("cksnap", encodings)
     return np.array(encodings)

@@ -10,5 +10,4 @@ def ANF(fastas, **kw):
         for j in range(len(sequence)):
             code.append(sequence[0: j + 1].count(sequence[j]) / (j + 1))
         encodings.append(code)
-    np.savetxt("anf", encodings)
     return np.array(encodings)

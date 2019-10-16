@@ -29,5 +29,4 @@ def TNC(fastas, **kw):
             tmpCode = [i/sum(tmpCode) for i in tmpCode]
         code = code + tmpCode
         encodings.append(code)
-    np.savetxt("tnc", encodings)
     return np.array(encodings)

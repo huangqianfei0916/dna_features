@@ -19,5 +19,4 @@ def NAC(fastas, **kw):
         for na in NA:
             code.append(count[na])
         encodings.append(code)
-    np.savetxt("nac", encodings)
     return np.array(encodings)

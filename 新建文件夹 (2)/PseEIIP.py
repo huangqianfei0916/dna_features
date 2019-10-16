@@ -43,5 +43,4 @@ def PseEIIP(fastas, **kw):
         trincleotide_frequency = TriNcleotideComposition(sequence, base)
         code = code + [EIIPxyz[triN] * trincleotide_frequency[triN] for triN in trincleotides]
         encodings.append(code)
-    np.savetxt("pseeiip", encodings)
     return np.array(encodings)

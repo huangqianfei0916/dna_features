@@ -9,19 +9,19 @@ import sys, os
 import pandas as pd
 import numpy as np
 
-from DNA.binary import binary
-from DNA.DNC import DNC
-from DNA.TNC import TNC
-from DNA.ENAC import ENAC
-from DNA.NAC import NAC
-from DNA.ANF import ANF
-from DNA.CKSNAP import CKSNAP
-from DNA.PseEIIP import PseEIIP
-from DNA.EIIP import EIIP
-from DNA.RCKmer import RCKmer
-from DNA.kmer import Kmer
-from DNA.NCP import NCP
-
+from DNA_features.binary import binary
+from DNA_features.DNC import DNC
+from DNA_features.TNC import TNC
+from DNA_features.ENAC import ENAC
+from DNA_features.NAC import NAC
+from DNA_features.ANF import ANF
+from DNA_features.CKSNAP import CKSNAP
+from DNA_features.PseEIIP import PseEIIP
+from DNA_features.EIIP import EIIP
+from DNA_features.RCKmer import RCKmer
+from DNA_features.kmer import Kmer
+from DNA_features.NCP import NCP
+import argparse
 
 def read_fasta(file):
     f = open(file)
@@ -37,46 +37,23 @@ def read_fasta(file):
 
 
 def main():
-    fasta = read_fasta("feature_fasta.fasta")
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-fasta', required=True, help="fasta file name")
+    args = parser.parse_args()
+    print(args)
 
-    # 164d
-    t10 = binary(fasta)
-    np.savetxt("binary", t10)
 
-    # 123d
-    t11 = NCP(fasta)
-    np.savetxt("ncp", t11)
+    fasta = read_fasta(args.fasta)
 
-    # 64
-    t12 = Kmer(fasta)
-    np.savetxt("kmer", t12)
+    feature_name=["binary","NCP","Kmer","DNC","TNC","ENAC","NAC","ANF","CKSNAP","PseEIIP","EIIP","RCKmer"]
 
-    t1 = DNC(fasta)
-    np.savetxt("dnc", t1)
+    feature={"binary":"binary(fasta)","NCP":"NCP(fasta)","Kmer":"Kmer(fasta)"
+        , "DNC": "DNC(fasta)","TNC":"TNC(fasta)","ENAC":"ENAC(fasta)","NAC":"NAC(fasta)",
+            "ANF":"ANF(fasta)","CKSNAP":"CKSNAP(fasta)" ,"PseEIIP":"PseEIIP(fasta)",
+             "EIIP":"EIIP(fasta)","RCKmer":"RCKmer(fasta)"}
 
-    t2 = TNC(fasta)
-    np.savetxt("tnc", t2)
-
-    t3 = ENAC(fasta)
-    np.savetxt("enac", t3)
-
-    t4 = NAC(fasta)
-    np.savetxt("nac", t4)
-
-    t5 = ANF(fasta)
-    np.savetxt("anf", t5)
-
-    t6 = CKSNAP(fasta)
-    np.savetxt("cksnap", t6)
-
-    t7 = PseEIIP(fasta)
-    np.savetxt("pseeiip", t7)
-
-    t8 = EIIP(fasta)
-    np.savetxt("eiip", t8)
-
-    t9 = RCKmer(fasta)
-    np.savetxt("rckmer", t9)
+    for i in feature_name:
+        eval(feature[i])
 
 
 if __name__ == '__main__':

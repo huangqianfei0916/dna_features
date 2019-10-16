@@ -17,6 +17,5 @@ def binary(fastas, **kw):
                 tag = 1 if aa == aa1 else 0
                 code.append(tag)
         encodings.append(code)
-    np.savetxt("binary", encodings)
     return np.array(encodings)
 

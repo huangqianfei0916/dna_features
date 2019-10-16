@@ -9,11 +9,11 @@ def kmerArray(sequence, k):
     return kmer
 
 
-def Kmer(fastas, k=4, type="DNA", upto=False, normalize=True, **kw):
+def Kmer(fastas, k=4, type="DNA_features", upto=False, normalize=True, **kw):
     encoding = []
     header = ['#', 'label']
     NA = 'ACGT'
-    if type in ("DNA", 'RNA'):
+    if type in ("DNA_features", 'RNA'):
         NA = 'ACGT'
     else:
         NA = 'ACDEFGHIKLMNPQRSTVWY'
@@ -63,4 +63,5 @@ def Kmer(fastas, k=4, type="DNA", upto=False, normalize=True, **kw):
                 else:
                     code.append(0)
             encoding.append(code)
+    np.savetxt("{}-mer".format(k), encoding)
     return np.array(encoding)

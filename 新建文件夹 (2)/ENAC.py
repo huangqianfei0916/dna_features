@@ -21,5 +21,4 @@ def ENAC(fastas, window=5, **kw):
                 for aa in AA:
                     code.append(count[aa])
         encodings.append(code)
-    np.savetxt("enac", encodings)
     return np.array(encodings)

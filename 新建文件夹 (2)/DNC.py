@@ -19,5 +19,4 @@ def DNC(fastas, **kw):
             tmpCode = [i/sum(tmpCode) for i in tmpCode]
         code = code + tmpCode
         encodings.append(code)
-    np.savetxt("dnc", encodings)
     return np.array(encodings)

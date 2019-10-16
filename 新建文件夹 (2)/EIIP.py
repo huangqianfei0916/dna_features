@@ -21,5 +21,4 @@ def EIIP(fastas, **kw):
         for aa in sequence:
             code.append(EIIP_dict.get(aa, 0))
         encodings.append(code)
-    np.savetxt("eiip", encodings)
     return np.array(encodings)

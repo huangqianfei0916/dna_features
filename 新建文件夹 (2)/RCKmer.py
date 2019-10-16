@@ -106,5 +106,4 @@ def RCKmer(fastas, k=4, upto=False, normalize=True, **kw):
                 else:
                     code.append(0)
             encoding.append(code)
-    np.savetxt("rckmer", encoding)
     return np.array(encoding)
